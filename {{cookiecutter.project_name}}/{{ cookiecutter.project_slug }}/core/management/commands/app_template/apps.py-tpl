@@ -1,0 +1,5 @@
+from django.apps import AppConfig
+
+class {{ '{{' }}app_name|capfirst{{ '}}' }}Config(AppConfig):
+    name = "{{ cookiecutter.project_slug }}.{{ '{{' }}app_name{{ '}}' }}"
+    label = "{{ cookiecutter.project_slug }}_{{ '{{' }}app_name{{ '}}' }}"

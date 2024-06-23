@@ -1,0 +1,6 @@
+from django.db import models
+
+from {{ cookiecutter.project_slug }}.core.models import BaseModel
+
+
+# Create your models here.
