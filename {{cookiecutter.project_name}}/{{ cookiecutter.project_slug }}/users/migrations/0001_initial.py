@@ -119,7 +119,7 @@ class Migration(migrations.Migration):
                 ),
             ],
         ),
-        {%- if cookiecutter.username_type == "email" -%}
+        {% if cookiecutter.username_type == "email" %}
         migrations.AddConstraint(
             model_name="user",
             constraint=models.UniqueConstraint(

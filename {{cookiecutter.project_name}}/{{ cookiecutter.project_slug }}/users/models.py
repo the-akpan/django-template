@@ -15,14 +15,14 @@ class User(BaseModel, AbstractUser):
     Custom user model
     """
 
-    {%- if cookiecutter.username_type == "email" -%}
+{% if cookiecutter.username_type == "email" %}
     username = None
     email = models.EmailField(unique=True, blank=False, null=False)
     USERNAME_FIELD = "email"
-    {%- else -%}
+{%- else -%}
     username = models.CharField(unique=True, blank=True, null=True, max_length=150)
     REQUIRED_FIELDS = []
-    {%- endif -%}
+{%- endif -%}
 
 
     class Meta:
@@ -31,7 +31,7 @@ class User(BaseModel, AbstractUser):
         """
 
         constraints = [
-            {%- if cookiecutter.username_type == "username" -%}
+            {% if cookiecutter.username_type == "username" %}
             models.UniqueConstraint(
                 fields=["username"],
                 condition=models.Q(deleted_at__isnull=True),
@@ -53,8 +53,8 @@ class User(BaseModel, AbstractUser):
         String representation of the User model
         """
 
-        {%- if cookiecutter.username_type == "username" -%}
+{% if cookiecutter.username_type == "username" %}
         return f"{self.username}"
-        {%- else -%}
+{%- else -%}
         return f"{self.email}"
-        {%- endif -%}
+{%- endif -%}

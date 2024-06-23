@@ -16,11 +16,11 @@ def create_superuser(apps: Apps, _):
     User = apps.get_model("{{ cookiecutter.project_slug }}_users", "User")  # noqa: C0103
 
     User.objects.create(
-        {%- if cookiecutter.username_type == "email" -%}
+        {% if cookiecutter.username_type == "email" %}
         email=settings.SUPERUSER_EMAIL,
-        {%- else -%}
+        {% else %}
         username=settings.SUPERUSER_USERNAME,
-        {%- endif -%}
+        {% endif %}
         password=make_password(settings.SUPERUSER_PASSWORD),
         is_superuser=True,
         is_staff=True,
